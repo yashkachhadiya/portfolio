@@ -1,10 +1,14 @@
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 px-6 bg-[var(--surface)]">
+    <section id="experience" className="py-20 px-6 ">
       <div className="max-w-[800px] mx-auto">
         <div className="text-center mb-12">
-          <p className="section-label">My Journey</p>
-          <h2 className="font-extrabold">Work Experience</h2>
+          <p className="section-label mb-3">My Journey</p>
+          <h2 className="section-title mb-3">Work Experience</h2>
+          <p className="section-description max-w-[520px] mx-auto">
+            Experience growing products, collaborating with teams, and
+            delivering features from idea to production.
+          </p>
         </div>
 
         <div className="border-l-2 border-l-[rgba(124,58,237,0.25)] pl-[30px]">

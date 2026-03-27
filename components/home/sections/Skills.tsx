@@ -2,18 +2,17 @@ import { Monitor, Cpu, Database, Cloud } from "lucide-react";
 
 export default function Skills() {
   return (
-    <section
-      id="skills"
-      className="py-[100px] px-6 bg-gradient-to-b from-[var(--bg)] to-[#0d0d16]"
-    >
+    <section id="skills" className="py-[100px] px-6">
       <div className="max-w-[1100px] mx-auto">
         {/* HEADER */}
         <div className="text-center mb-[60px]">
-          <p className="section-label tracking-[2px] text-[#22d3ee]">
-            TECH STACK
-          </p>
+          <p className="section-label mb-3">TECH STACK</p>
 
-          <h2 className="font-extrabold">Tools I Work With</h2>
+          <h2 className="section-title mb-3">Tools I Work With</h2>
+
+          <p className="section-description max-w-[520px] mx-auto">
+            Modern tools and frameworks I use to build fast, reliable products.
+          </p>
         </div>
 
         {/* GRID */}

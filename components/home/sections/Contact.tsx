@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { CheckCircle2 } from "lucide-react";
 
 export default function Contact() {
   const [toast, setToast] = useState(false);
@@ -20,18 +21,18 @@ export default function Contact() {
       <div className="max-w-[700px] mx-auto">
         {/* HEADER */}
         <div className="text-center mb-12">
-          <p className="section-label mb-[10px]">LET'S WORK TOGETHER</p>
+          <p className="section-label mb-3">LET'S WORK TOGETHER</p>
 
-          <h2 className="font-extrabold mb-3">Ready to Start a Project?</h2>
+          <h2 className="section-title mb-4">Ready to Start a Project?</h2>
 
-          <p className="text-[var(--muted)] max-w-[480px] mx-auto">
+          <p className="section-description max-w-[480px] mx-auto">
             Whether it's a quick consult or a full-scale build, I'm open to new
             freelance opportunities. Let's chat!
           </p>
         </div>
 
         {/* CARD (MAIN FIX) */}
-        <div className="card p-10 max-w-[520px] mx-auto rounded-2xl">
+        <div className="card p-10 max-w-[720px] mx-auto rounded-2xl">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -46,17 +47,17 @@ export default function Contact() {
             className="flex flex-col gap-5"
           >
             {/* GRID FIX */}
-            <div className="grid grid-cols-2 gap-[14px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[14px]">
               <div>
-                <label className="text-[0.75rem] text-[var(--muted)]">
-                  Your Name
+                <label className="text-[0.9rem] text-[var(--muted)] mb-1 block font-bold">
+                  Your Name *
                 </label>
                 <input className="form-input" placeholder="Jane Smith" />
               </div>
 
               <div>
-                <label className="text-[0.75rem] text-[var(--muted)]">
-                  Email Address
+                <label className="text-[0.9rem] text-[var(--muted)] mb-1 block font-bold">
+                  Email Address *
                 </label>
                 <input className="form-input" placeholder="jane@company.com" />
               </div>
@@ -64,8 +65,8 @@ export default function Contact() {
 
             {/* SELECT */}
             <div>
-              <label className="text-[0.75rem] text-[var(--muted)]">
-                Project Type
+              <label className="text-[0.9rem] text-[var(--muted)] mb-1 block font-bold">
+                Project Type *
               </label>
 
               <select className="form-input">
@@ -79,8 +80,8 @@ export default function Contact() {
 
             {/* MESSAGE */}
             <div>
-              <label className="text-[0.75rem] text-[var(--muted)]">
-                Tell me about your project
+              <label className="text-[0.9rem] text-[var(--muted)] mb-1 block font-bold">
+                Tell me about your project *
               </label>
 
               <textarea
@@ -111,7 +112,12 @@ export default function Contact() {
       </div>
 
       <div className={`toast ${toast ? "show" : ""}`}>
-        Message sent! I'll be in touch soon.
+        <div className="flex items-center gap-3 rounded-full bg-gradient-to-r from-[#7c3aed] to-[#06b6d4] px-6 py-3 shadow-lg">
+          <CheckCircle2 className="w-5 h-5 text-white" />
+          <p className="text-sm font-semibold text-white">
+            Message sent! I'll be in touch soon.
+          </p>
+        </div>
       </div>
     </section>
   );

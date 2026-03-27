@@ -6,10 +6,11 @@ export default function Projects() {
       <div className="max-w-[1100px] mx-auto">
         {/* HEADER */}
         <div className="text-center mb-[60px]">
-          <p className="section-label tracking-[2px]">MY WORK</p>
-          <h2 className="font-extrabold">Featured Projects</h2>
-          <p className="text-[var(--muted)] mt-[10px]">
-            A selection of things I’ve built
+          <p className="section-label mb-3">MY WORK</p>
+          <h2 className="section-title mb-3">Featured Projects</h2>
+          <p className="section-description max-w-[520px] mx-auto">
+            A selection of real-world projects that showcase my focus on
+            performance, usability, and clean architecture.
           </p>
         </div>
 
