@@ -13,9 +13,19 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Yash Kachhadiya - Portfolio",
+  title: "Yash Kachhadiya | Full Stack Developer",
   description:
-    "Hi, I'm Yash Kachhadiya, a Full Stack Software Engineer. I craft fast, scalable & beautiful web applications. Explore my projects and experience.",
+    "Portfolio of Yash Kachhadiya - Full Stack Developer specializing in React.js, Next.js, NestJS, Node.js, TypeScript, and scalable web architectures.",
+  keywords: [
+    "Yash Kachhadiya",
+    "Full Stack Developer",
+    "React.js",
+    "Next.js",
+    "NestJS",
+    "Node.js",
+    "TypeScript",
+    "Portfolio",
+  ],
 };
 
 export default function RootLayout({
