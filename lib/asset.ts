@@ -1,10 +1,14 @@
 /**
- * Helper to resolve asset and resource paths correctly across both
- * local development (root /) and GitHub Pages subpath deployment (/portfolio/).
+ * Direct constant for repository base path on GitHub Pages.
+ * No environment variables needed or used.
  */
+export const BASE_PATH = "/portfolio";
+
 export function getAssetPath(path: string): string {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  if (!path) return basePath || "/";
+  if (!path) return `${BASE_PATH}/`;
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
-  return `${basePath}${cleanPath}`;
+  if (cleanPath === "/") {
+    return `${BASE_PATH}/`;
+  }
+  return `${BASE_PATH}${cleanPath}`;
 }
