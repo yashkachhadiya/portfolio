@@ -88,7 +88,7 @@ export default function Navbar() {
       >
         {/* Brand Logo */}
         <div className="flex items-center gap-3">
-          <a href="/" className="flex items-center gap-2.5 group">
+          <a href="/portfolio/" className="flex items-center gap-2.5 group">
             <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-primary to-secondary p-[1.5px] shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform overflow-hidden">
               <div className="w-full h-full bg-[#080d1a] rounded-full overflow-hidden flex items-center justify-center">
                 <Image
@@ -120,11 +120,10 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-xs font-medium px-3.5 py-1.5 rounded-full transition-all ${
-                  isActive
+                className={`text-xs font-medium px-3.5 py-1.5 rounded-full transition-all ${isActive
                     ? "bg-white/[0.08] text-white font-semibold border border-white/10 shadow-sm"
                     : "text-gray-400 hover:text-white hover:bg-white/[0.08] border border-transparent"
-                }`}
+                  }`}
               >
                 {link.label}
               </a>
@@ -177,11 +176,10 @@ export default function Navbar() {
                   <a
                     key={link.href}
                     href={link.href}
-                    className={`px-4 py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-between ${
-                      isActive
+                    className={`px-4 py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-between ${isActive
                         ? "bg-white/10 text-white font-semibold border border-white/15"
                         : "text-gray-200 hover:text-white hover:bg-white/10"
-                    }`}
+                      }`}
                     onClick={() => setMobileOpen(false)}
                   >
                     <span>{link.label}</span>
