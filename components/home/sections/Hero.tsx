@@ -19,6 +19,7 @@ import {
   Database,
   Globe,
 } from "lucide-react";
+import { getAssetPath } from "@/lib/asset";
 
 export default function Hero() {
   return (
@@ -70,7 +71,7 @@ export default function Hero() {
               </a>
 
               <a
-                href="/Yash_resume.pdf"
+                href={getAssetPath("/Yash_resume.pdf")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-glass px-5 sm:px-6 py-3 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 border-white/15 hover:border-primary-soft"

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, FileText, ArrowUpRight, Sparkles } from "lucide-react";
 import Image from "next/image";
+import { getAssetPath } from "@/lib/asset";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -88,11 +89,11 @@ export default function Navbar() {
       >
         {/* Brand Logo */}
         <div className="flex items-center gap-3">
-          <a href="/portfolio/" className="flex items-center gap-2.5 group">
+          <a href={getAssetPath("/")} className="flex items-center gap-2.5 group">
             <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-primary to-secondary p-[1.5px] shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform overflow-hidden">
               <div className="w-full h-full bg-[#080d1a] rounded-full overflow-hidden flex items-center justify-center">
                 <Image
-                  src="/profile.png"
+                  src={getAssetPath("/profile.png")}
                   alt="Yash Kachhadiya"
                   width={40}
                   height={40}
@@ -134,7 +135,7 @@ export default function Navbar() {
         {/* Right Action CTAs */}
         <div className="flex items-center gap-2.5">
           <a
-            href="/Yash_resume.pdf"
+            href={getAssetPath("/Yash_resume.pdf")}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-glass hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold hover:border-primary-soft"
@@ -190,7 +191,7 @@ export default function Navbar() {
 
               <div className="pt-3 border-t border-white/10 flex flex-col gap-2.5">
                 <a
-                  href="/Yash_resume.pdf"
+                  href={getAssetPath("/Yash_resume.pdf")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-glass flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold"

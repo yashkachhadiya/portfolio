@@ -16,6 +16,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import emailjs from "emailjs-com";
+import { getAssetPath } from "@/lib/asset";
 
 export default function Contact() {
   const [toast, setToast] = useState(false);
@@ -254,7 +255,7 @@ export default function Contact() {
                 </a>
 
                 <a
-                  href="/Yash_resume.pdf"
+                  href={getAssetPath("/Yash_resume.pdf")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between p-3 rounded-xl bg-primary-soft hover:bg-primary/20 border border-primary-soft text-white transition group"

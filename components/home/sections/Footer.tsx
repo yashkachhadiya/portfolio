@@ -2,6 +2,7 @@
 
 import { Github, Linkedin, Mail, FileText, ArrowUp } from "lucide-react";
 import Image from "next/image";
+import { getAssetPath } from "@/lib/asset";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -26,7 +27,7 @@ export default function Footer() {
               <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-primary to-secondary p-[1.5px] overflow-hidden">
                 <div className="w-full h-full bg-[#080d1a] rounded-full overflow-hidden flex items-center justify-center">
                   <Image
-                    src="/profile.png"
+                    src={getAssetPath("/profile.png")}
                     alt="Yash Kachhadiya"
                     width={40}
                     height={40}
@@ -47,7 +48,7 @@ export default function Footer() {
           {/* Social Links & Resume */}
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href="/Yash_resume.pdf"
+              href={getAssetPath("/Yash_resume.pdf")}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-glass px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 hover:border-primary-soft"
