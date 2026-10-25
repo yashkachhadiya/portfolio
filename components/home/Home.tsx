@@ -10,7 +10,7 @@ import Footer from "@/components/home/sections/Footer";
 
 export default function Home() {
   return (
-    <div className="portfolio-wrapper">
+    <div id="top" className="portfolio-wrapper">
       {/* NAVBAR */}
       <Navbar />
 

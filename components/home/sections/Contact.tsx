@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   Send,
   ArrowUpRight,
+  Sparkles,
 } from "lucide-react";
 import emailjs from "emailjs-com";
 
@@ -84,19 +85,18 @@ export default function Contact() {
           (error) => {
             setLoading(false);
             console.error("EmailJS Error:", error);
-            // Fallback for user ease
             window.location.href = `mailto:yashkachhadiya3302@gmail.com?subject=Contact from ${encodeURIComponent(
               formData.name
             )}&body=${encodeURIComponent(formData.message)}`;
           }
         );
     } else {
-      // Graceful fallback to mailto if env variables aren't configured yet
       setLoading(false);
       window.location.href = `mailto:yashkachhadiya3302@gmail.com?subject=Contact from ${encodeURIComponent(
         formData.name
       )}&body=${encodeURIComponent(
-        `Hi Yash,\n\n${formData.message}\n\nProject Type: ${formData.projectType || "General Inquiry"
+        `Hi Yash,\n\n${formData.message}\n\nProject Type: ${
+          formData.projectType || "General Inquiry"
         }\nFrom: ${formData.name} (${formData.email})`
       )}`;
       setToastMessage("Opening your email client to send message...");
@@ -106,46 +106,48 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 relative">
+    <section id="contact" className="py-24 px-4 sm:px-6 relative">
       <div className="max-w-[1100px] mx-auto">
-        {/* HEADER */}
-        <div className="text-center mb-16 max-w-[650px] mx-auto">
-          <p className="section-label mb-3">GET IN TOUCH</p>
-          <h2 className="section-title mb-4">
-            Let's Build Something <br />
-            <span className="grad-text">Impactful Together</span>
+        {/* Section Header */}
+        <div className="text-center max-w-[650px] mx-auto mb-16">
+          <div className="inline-block mb-3">
+            <span className="section-tag">GET IN TOUCH</span>
+          </div>
+          <h2 className="section-heading mb-4">
+            Let's Collaborate On <br />
+            <span className="grad-text-aurora">Your Next Big Build</span>
           </h2>
-          <p className="section-description">
-            Whether you have a full-stack project in mind, need scalable architecture
-            consulting, or want to discuss full-time opportunities, my inbox is always open.
+          <p className="section-desc">
+            Whether you have a web application to architect, need full-stack consulting,
+            or are looking to hire a dedicated engineer in Ahmedabad or remotely — let's connect!
           </p>
         </div>
 
-        {/* 2-COLUMN LAYOUT */}
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
-          {/* LEFT: CONTACT DETAILS & SOCIALS */}
+        {/* 2-Column Glass Grid */}
+        <div className="grid lg:grid-cols-12 gap-6 items-start">
+          {/* Left Column: Direct Contact & Profiles */}
           <div className="lg:col-span-5 flex flex-col gap-5">
-            {/* Contact info card */}
-            <div className="card p-7 rounded-2xl border border-white/10 bg-[rgba(19,19,26,0.7)] backdrop-blur-md">
-              <h3 className="text-lg font-bold text-white mb-5 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#06b6d4]" />
-                Direct Contact Information
+            {/* Contact Details Card */}
+            <div className="glass-panel rounded-3xl p-6 sm:p-7">
+              <h3 className="text-base font-bold text-white mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-primary" />
+                Direct Communication
               </h3>
 
-              <div className="space-y-4">
-                {/* Email item */}
-                <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 group hover:border-[#7c3aed]/40 transition">
+              <div className="space-y-3">
+                {/* Email Item */}
+                <div className="flex items-center justify-between p-3 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition group">
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-9 h-9 rounded-lg bg-[rgba(124,58,237,0.15)] flex items-center justify-center text-[#a78bfa] shrink-0">
-                      <Mail size={18} />
+                    <div className="w-9 h-9 rounded-xl bg-primary-soft border border-primary-soft flex items-center justify-center text-primary shrink-0">
+                      <Mail size={16} />
                     </div>
                     <div className="truncate">
-                      <p className="text-[0.7rem] uppercase text-[var(--muted)] font-semibold">
-                        Email
+                      <p className="text-[10px] uppercase font-mono text-gray-400">
+                        Email Address
                       </p>
                       <a
                         href="mailto:yashkachhadiya3302@gmail.com"
-                        className="text-xs sm:text-sm font-medium text-white hover:text-[#06b6d4] transition truncate block"
+                        className="text-xs sm:text-sm font-medium text-white hover:text-secondary transition truncate block"
                       >
                         yashkachhadiya3302@gmail.com
                       </a>
@@ -157,30 +159,30 @@ export default function Contact() {
                     onClick={() =>
                       copyToClipboard("yashkachhadiya3302@gmail.com", "email")
                     }
-                    className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-[var(--muted)] hover:text-white transition"
-                    title="Copy email address"
+                    className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition"
+                    title="Copy Email"
                   >
                     {copiedEmail ? (
-                      <Check size={16} className="text-[#10b981]" />
+                      <Check size={14} className="text-primary" />
                     ) : (
-                      <Copy size={16} />
+                      <Copy size={14} />
                     )}
                   </button>
                 </div>
 
-                {/* Phone item */}
-                <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 group hover:border-[#06b6d4]/40 transition">
+                {/* Phone Item */}
+                <div className="flex items-center justify-between p-3 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition group">
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-9 h-9 rounded-lg bg-[rgba(6,182,212,0.15)] flex items-center justify-center text-[#06b6d4] shrink-0">
-                      <Phone size={18} />
+                    <div className="w-9 h-9 rounded-xl bg-secondary-soft border border-secondary-soft flex items-center justify-center text-secondary shrink-0">
+                      <Phone size={16} />
                     </div>
                     <div className="truncate">
-                      <p className="text-[0.7rem] uppercase text-[var(--muted)] font-semibold">
+                      <p className="text-[10px] uppercase font-mono text-gray-400">
                         Phone / WhatsApp
                       </p>
                       <a
                         href="tel:+916354081193"
-                        className="text-xs sm:text-sm font-medium text-white hover:text-[#06b6d4] transition truncate block"
+                        className="text-xs sm:text-sm font-medium text-white hover:text-secondary-light transition truncate block"
                       >
                         +91 6354081193
                       </a>
@@ -190,24 +192,24 @@ export default function Contact() {
                   <button
                     type="button"
                     onClick={() => copyToClipboard("+916354081193", "phone")}
-                    className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-[var(--muted)] hover:text-white transition"
-                    title="Copy phone number"
+                    className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition"
+                    title="Copy Phone"
                   >
                     {copiedPhone ? (
-                      <Check size={16} className="text-[#10b981]" />
+                      <Check size={14} className="text-secondary" />
                     ) : (
-                      <Copy size={16} />
+                      <Copy size={14} />
                     )}
                   </button>
                 </div>
 
-                {/* Location item */}
-                <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5">
-                  <div className="w-9 h-9 rounded-lg bg-[rgba(16,185,129,0.15)] flex items-center justify-center text-[#10b981] shrink-0">
-                    <MapPin size={18} />
+                {/* Location Item */}
+                <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/5">
+                  <div className="w-9 h-9 rounded-xl bg-primary-soft border border-primary-soft flex items-center justify-center text-primary-light shrink-0">
+                    <MapPin size={16} />
                   </div>
                   <div>
-                    <p className="text-[0.7rem] uppercase text-[var(--muted)] font-semibold">
+                    <p className="text-[10px] uppercase font-mono text-gray-400">
                       Location
                     </p>
                     <p className="text-xs sm:text-sm font-medium text-white">
@@ -218,90 +220,75 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Social profiles & Resume card */}
-            <div className="card p-7 rounded-2xl border border-white/10 bg-[rgba(19,19,26,0.7)] backdrop-blur-md">
-              <h3 className="text-base font-bold text-white mb-4">
+            {/* Socials & Resume Card */}
+            <div className="glass-panel rounded-3xl p-6 sm:p-7">
+              <h3 className="text-base font-bold text-white mb-3">
                 Profiles & Resume
               </h3>
 
-              <div className="space-y-2.5">
+              <div className="space-y-2">
                 <a
                   href="https://github.com/yashkachhadiya27"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 text-gray-200 hover:text-white transition group"
+                  className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/5 text-gray-200 hover:text-white transition group"
                 >
-                  <div className="flex items-center gap-3">
-                    <Github size={18} className="text-white" />
-                    <span className="text-sm font-medium">
-                      github.com/yashkachhadiya27
-                    </span>
+                  <div className="flex items-center gap-2.5">
+                    <Github size={16} className="text-white" />
+                    <span className="text-xs font-medium">github.com/yashkachhadiya27</span>
                   </div>
-                  <ArrowUpRight
-                    size={15}
-                    className="text-[var(--muted)] group-hover:text-white"
-                  />
+                  <ArrowUpRight size={13} className="text-gray-400 group-hover:text-white" />
                 </a>
 
                 <a
                   href="https://linkedin.com/in/yashkachhadiya"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 text-gray-200 hover:text-white transition group"
+                  className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/5 text-gray-200 hover:text-white transition group"
                 >
-                  <div className="flex items-center gap-3">
-                    <Linkedin size={18} className="text-[#06b6d4]" />
-                    <span className="text-sm font-medium">
-                      linkedin.com/in/yashkachhadiya
-                    </span>
+                  <div className="flex items-center gap-2.5">
+                    <Linkedin size={16} className="text-secondary" />
+                    <span className="text-xs font-medium">linkedin.com/in/yashkachhadiya</span>
                   </div>
-                  <ArrowUpRight
-                    size={15}
-                    className="text-[var(--muted)] group-hover:text-white"
-                  />
+                  <ArrowUpRight size={13} className="text-gray-400 group-hover:text-white" />
                 </a>
 
                 <a
                   href="/Yash_resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-xl bg-[rgba(124,58,237,0.12)] hover:bg-[rgba(124,58,237,0.2)] border border-[rgba(124,58,237,0.3)] text-white transition group"
+                  className="flex items-center justify-between p-3 rounded-xl bg-primary-soft hover:bg-primary/20 border border-primary-soft text-white transition group"
                 >
-                  <div className="flex items-center gap-3">
-                    <FileText size={18} className="text-[#a78bfa]" />
-                    <span className="text-sm font-medium">
-                      Download Updated Resume (PDF)
-                    </span>
+                  <div className="flex items-center gap-2.5">
+                    <FileText size={16} className="text-secondary" />
+                    <span className="text-xs font-semibold">Download Resume (PDF)</span>
                   </div>
-                  <ArrowUpRight
-                    size={15}
-                    className="text-[#a78bfa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                  />
+                  <ArrowUpRight size={13} className="text-secondary" />
                 </a>
               </div>
             </div>
           </div>
 
-          {/* RIGHT: CONTACT FORM */}
+          {/* Right Column: Glass Inquiry Form */}
           <div className="lg:col-span-7">
-            <div className="card p-7 sm:p-9 rounded-2xl border border-white/10 bg-[rgba(19,19,26,0.7)] backdrop-blur-md">
-              <h3 className="text-xl font-bold text-white mb-2">
+            <div className="glass-panel rounded-3xl p-6 sm:p-8">
+              <h3 className="text-xl font-bold text-white mb-1.5">
                 Send a Message
               </h3>
-              <p className="text-[var(--muted)] text-xs sm:text-sm mb-6">
-                Fill in the details below and I'll respond within 24 hours.
+              <p className="text-xs text-gray-400 mb-6">
+                Have a question or opportunity? Drop a note below and I will get back to you promptly.
               </p>
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs text-[var(--muted)] mb-1.5 block font-semibold">
+                    <label className="text-xs text-gray-300 mb-1.5 block font-semibold">
                       Your Name <span className="text-red-400">*</span>
                     </label>
                     <input
                       required
                       type="text"
-                      className="form-input text-sm"
+                      className="glass-input"
                       placeholder="e.g. Alex Sharma"
                       value={formData.name}
                       onChange={(e) =>
@@ -311,13 +298,13 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="text-xs text-[var(--muted)] mb-1.5 block font-semibold">
-                      Your Email Address <span className="text-red-400">*</span>
+                    <label className="text-xs text-gray-300 mb-1.5 block font-semibold">
+                      Email Address <span className="text-red-400">*</span>
                     </label>
                     <input
                       required
                       type="email"
-                      className="form-input text-sm"
+                      className="glass-input"
                       placeholder="alex@company.com"
                       value={formData.email}
                       onChange={(e) =>
@@ -328,45 +315,42 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="text-xs text-[var(--muted)] mb-1.5 block font-semibold">
-                    Inquiry / Project Type
+                  <label className="text-xs text-gray-300 mb-1.5 block font-semibold">
+                    Inquiry Type
                   </label>
                   <select
-                    className="form-input text-sm"
+                    className="glass-input"
                     value={formData.projectType}
                     onChange={(e) =>
                       setFormData({ ...formData, projectType: e.target.value })
                     }
                   >
-                    <option value="">Select an inquiry type...</option>
-                    <option value="Full Stack Web Application">
-                      Full Stack Web Application (React/Next.js/NestJS)
+                    <option value="" className="bg-[#080d1a] text-white">Select inquiry type...</option>
+                    <option value="Full Stack Web Application" className="bg-[#080d1a] text-white">
+                      Full Stack Web Application (React / Next.js / NestJS)
                     </option>
-                    <option value="Frontend Development">
-                      Frontend Development (Next.js / React / Tailwind)
+                    <option value="Frontend Engineering" className="bg-[#080d1a] text-white">
+                      Frontend Engineering (Next.js / Tailwind CSS)
                     </option>
-                    <option value="Backend & API Architecture">
-                      Backend & API Architecture (NestJS / Node / SQL / NoSQL)
+                    <option value="Backend & APIs" className="bg-[#080d1a] text-white">
+                      Backend & APIs (NestJS / Node / SQL / NoSQL)
                     </option>
-                    <option value="Headless CMS & Integrations">
-                      Headless CMS & Integrations (Strapi / WordPress)
+                    <option value="Full-Time Engineering Role" className="bg-[#080d1a] text-white">
+                      Full-Time Engineering Role
                     </option>
-                    <option value="Full-Time Engineering Role">
-                      Full-Time Engineering Role Opportunity
-                    </option>
-                    <option value="General Collaboration">General Collaboration</option>
+                    <option value="General Collaboration" className="bg-[#080d1a] text-white">General Collaboration</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="text-xs text-[var(--muted)] mb-1.5 block font-semibold">
+                  <label className="text-xs text-gray-300 mb-1.5 block font-semibold">
                     Message <span className="text-red-400">*</span>
                   </label>
                   <textarea
                     required
                     rows={5}
-                    className="form-input text-sm resize-none"
-                    placeholder="Tell me about your project, requirements, or team..."
+                    className="glass-input resize-none"
+                    placeholder="Tell me about your requirements, project timeline, or team..."
                     value={formData.message}
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
@@ -377,10 +361,10 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-glow w-full py-3.5 rounded-xl text-white font-bold flex items-center justify-center gap-2 text-sm shadow-xl mt-2 disabled:opacity-50"
+                  className="btn-glow w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 text-xs sm:text-sm mt-2 disabled:opacity-50"
                 >
-                  <Send size={16} />
-                  <span>{loading ? "Sending Message..." : "Send Message"}</span>
+                  <Send size={15} />
+                  <span>{loading ? "Sending..." : "Send Message"}</span>
                 </button>
               </form>
             </div>
@@ -388,11 +372,11 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* TOAST NOTIFICATION */}
+      {/* Toast Notification */}
       <div className={`toast ${toast ? "show" : ""}`}>
-        <div className="flex items-center gap-3 rounded-full bg-gradient-to-r from-[#7c3aed] to-[#06b6d4] px-6 py-3.5 shadow-2xl border border-white/20">
-          <CheckCircle2 className="w-5 h-5 text-white shrink-0" />
-          <p className="text-sm font-semibold text-white">{toastMessage}</p>
+        <div className="flex items-center gap-3 rounded-2xl glass-dock px-6 py-3.5 shadow-2xl border border-white/20">
+          <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+          <p className="text-xs sm:text-sm font-semibold text-white">{toastMessage}</p>
         </div>
       </div>
     </section>

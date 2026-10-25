@@ -1,40 +1,58 @@
 "use client";
 
 import { Github, Linkedin, Mail, FileText, ArrowUp } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const topElem = document.getElementById("top") || document.body;
+    if (topElem && typeof topElem.scrollIntoView === "function") {
+      topElem.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      if (document.documentElement) {
+        document.documentElement.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }
+    }
   };
 
   return (
-    <footer className="border-t border-white/5 bg-[rgba(10,10,15,0.95)] pt-16 pb-12 px-6">
+    <footer className="border-t border-white/5 bg-[rgba(5,5,10,0.85)] backdrop-blur-2xl pt-16 pb-12 px-4 sm:px-6">
       <div className="max-w-[1200px] mx-auto">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-white/5">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-white/5">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#7c3aed] to-[#06b6d4] flex items-center justify-center text-white font-black text-sm">
-                YK
-              </span>
-              <span className="grad-text font-extrabold text-xl tracking-tight">
+            <div className="flex items-center gap-2.5 mb-2">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-primary to-secondary p-[1.5px] overflow-hidden">
+                <div className="w-full h-full bg-[#080d1a] rounded-full overflow-hidden flex items-center justify-center">
+                  <Image
+                    src="/profile.png"
+                    alt="Yash Kachhadiya"
+                    width={40}
+                    height={40}
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
+              <span className="font-extrabold text-lg text-white tracking-tight">
                 Yash Kachhadiya
               </span>
             </div>
-            <p className="text-[var(--muted)] text-sm max-w-[420px]">
-              Full Stack Developer building high-performance web applications with
+            <p className="text-gray-400 text-xs sm:text-sm max-w-[420px]">
+              Full Stack Developer building scalable web applications with
               React.js, Next.js, NestJS, and TypeScript.
             </p>
           </div>
 
           {/* Social Links & Resume */}
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3">
             <a
               href="/Yash_resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs sm:text-sm font-medium text-white flex items-center gap-1.5 transition"
+              className="btn-glass px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 hover:border-primary-soft"
             >
-              <FileText size={15} className="text-[#06b6d4]" />
+              <FileText size={13} className="text-secondary" />
               <span>Resume</span>
             </a>
 
@@ -42,49 +60,49 @@ export default function Footer() {
               href="https://github.com/yashkachhadiya27"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[var(--muted)] hover:text-white transition"
+              className="p-2.5 rounded-full glass-pill text-gray-300 hover:text-white transition"
               aria-label="GitHub Profile"
             >
-              <Github size={18} />
+              <Github size={16} />
             </a>
 
             <a
               href="https://linkedin.com/in/yashkachhadiya"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[var(--muted)] hover:text-[#06b6d4] transition"
+              className="p-2.5 rounded-full glass-pill text-gray-300 hover:text-secondary transition"
               aria-label="LinkedIn Profile"
             >
-              <Linkedin size={18} />
+              <Linkedin size={16} />
             </a>
 
             <a
               href="mailto:yashkachhadiya3302@gmail.com"
-              className="p-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[var(--muted)] hover:text-white transition"
+              className="p-2.5 rounded-full glass-pill text-gray-300 hover:text-white transition"
               aria-label="Email Yash"
             >
-              <Mail size={18} />
+              <Mail size={16} />
             </a>
 
             <button
               type="button"
               onClick={scrollToTop}
-              className="p-2.5 rounded-lg bg-[rgba(124,58,237,0.15)] hover:bg-[rgba(124,58,237,0.3)] border border-[rgba(124,58,237,0.3)] text-[#a78bfa] hover:text-white transition ml-2"
+              className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition ml-1"
               title="Back to top"
               aria-label="Back to top"
             >
-              <ArrowUp size={18} />
+              <ArrowUp size={16} />
             </button>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--muted)]">
-          <p>© {new Date().getFullYear()} Yash Kachhadiya. All rights reserved.</p>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+          <p>© {new Date().getFullYear()} Yash Kachhadiya. Engineered with Modern Glassmorphism.</p>
 
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#10b981]" />
-            <span>Open to full-time engineering roles & collaborations</span>
+            <span className="w-2 h-2 rounded-full bg-primary" />
+            <span className="text-gray-400">Open to full-time engineering roles & collaborations</span>
           </div>
         </div>
       </div>

@@ -1,22 +1,22 @@
 "use client";
 
 import {
-  Code,
+  Terminal,
   Layout,
   Server,
   Database,
-  Cpu,
   Layers,
-  Terminal,
+  Sparkles,
+  CheckCircle2,
 } from "lucide-react";
 
 export default function Skills() {
-  const skillCategories = [
+  const categories = [
     {
-      title: "Languages",
-      icon: <Terminal size={20} className="text-[#06b6d4]" />,
-      badge: "Core Fundamentals",
-      items: [
+      title: "Core Languages",
+      icon: <Terminal size={18} className="text-primary" />,
+      badge: "Foundations",
+      skills: [
         "JavaScript (ES6+)",
         "TypeScript",
         "HTML5",
@@ -26,9 +26,9 @@ export default function Skills() {
     },
     {
       title: "Frontend Engineering",
-      icon: <Layout size={20} className="text-[#a78bfa]" />,
-      badge: "User Interface",
-      items: [
+      icon: <Layout size={18} className="text-secondary" />,
+      badge: "UI / UX & SSR",
+      skills: [
         "React.js",
         "Next.js (SSR / SSG)",
         "Tailwind CSS",
@@ -39,12 +39,12 @@ export default function Skills() {
     },
     {
       title: "Backend & Architecture",
-      icon: <Server size={20} className="text-[#38bdf8]" />,
-      badge: "APIs & Services",
-      items: [
+      icon: <Server size={18} className="text-primary-light" />,
+      badge: "Services & APIs",
+      skills: [
         "NestJS",
         "Node.js",
-        "Express.js",
+        "ExpressJS",
         "RESTful APIs",
         "JWT Authentication",
         "Request Middleware",
@@ -53,9 +53,9 @@ export default function Skills() {
     },
     {
       title: "Databases & ORM",
-      icon: <Database size={20} className="text-[#34d399]" />,
+      icon: <Database size={18} className="text-secondary-light" />,
       badge: "Data Modeling",
-      items: [
+      skills: [
         "MySQL",
         "MongoDB",
         "Prisma ORM",
@@ -66,9 +66,9 @@ export default function Skills() {
     },
     {
       title: "CMS & Developer Tools",
-      icon: <Layers size={20} className="text-[#f59e0b]" />,
-      badge: "Workflows & Delivery",
-      items: [
+      icon: <Layers size={18} className="text-primary" />,
+      badge: "Delivery & Tooling",
+      skills: [
         "Strapi CMS",
         "Headless WordPress",
         "Git",
@@ -80,63 +80,68 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-24 px-6 relative">
+    <section id="skills" className="py-24 px-4 sm:px-6 relative">
       <div className="max-w-[1200px] mx-auto">
-        {/* HEADER */}
-        <div className="text-center mb-16 max-w-[700px] mx-auto">
-          <p className="section-label mb-3">TECHNICAL SKILLS</p>
-          <h2 className="section-title mb-4">
-            Technologies & Frameworks <br />
-            <span className="grad-text">I Build With Daily</span>
+        {/* Section Header */}
+        <div className="text-center max-w-[720px] mx-auto mb-16">
+          <div className="inline-block mb-3">
+            <span className="section-tag">TECHNICAL ARSENAL</span>
+          </div>
+          <h2 className="section-heading mb-4">
+            Technologies & Frameworks <br className="hidden sm:inline" />
+            <span className="grad-text-aurora">I Build Scalable Products With</span>
           </h2>
-          <p className="section-description">
-            A comprehensive overview of the modern programming languages, libraries,
-            frameworks, and developer tooling directly featured in my production work.
+          <p className="section-desc">
+            A comprehensive, verified technology stack practiced across production platforms,
+            commercial dashboards, and high-load web architectures.
           </p>
         </div>
 
-        {/* GRID */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {skillCategories.map((s, i) => (
+        {/* Skills Grid */}
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {categories.map((cat, idx) => (
             <div
-              key={i}
-              className={`card p-6 rounded-2xl border border-white/10 bg-[rgba(19,19,26,0.65)] backdrop-blur-md hover:border-[rgba(124,58,237,0.35)] transition flex flex-col justify-between ${
-                i === 2 ? "md:col-span-2 lg:col-span-1" : ""
+              key={idx}
+              className={`glass-panel rounded-2xl p-6 flex flex-col justify-between hover:border-white/20 transition-all ${
+                idx === 2 ? "md:col-span-2 lg:col-span-1" : ""
               }`}
             >
               <div>
-                {/* CARD HEADER */}
-                <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
+                {/* Category Header */}
+                <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-white/10">
                   <div className="flex items-center gap-2.5">
-                    <span className="p-2 rounded-lg bg-white/5 flex items-center justify-center">
-                      {s.icon}
+                    <span className="p-2 rounded-xl bg-white/5 border border-white/10">
+                      {cat.icon}
                     </span>
                     <h3 className="font-bold text-white text-base">
-                      {s.title}
+                      {cat.title}
                     </h3>
                   </div>
-                  <span className="text-[0.7rem] uppercase tracking-wider text-[var(--muted)] font-medium">
-                    {s.badge}
+                  <span className="text-[10px] uppercase font-mono tracking-wider text-gray-400 px-2 py-0.5 rounded-full bg-white/5 border border-white/5">
+                    {cat.badge}
                   </span>
                 </div>
 
-                {/* SKILLS CHIPS */}
+                {/* Skill Chips */}
                 <div className="flex flex-wrap gap-2 pt-1">
-                  {s.items.map((item, idx) => (
+                  {cat.skills.map((skill, sIdx) => (
                     <span
-                      key={idx}
-                      className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[rgba(124,58,237,0.12)] border border-[rgba(124,58,237,0.25)] text-gray-200 hover:text-white hover:border-[#06b6d4] transition cursor-default"
+                      key={sIdx}
+                      className="px-3 py-1.5 rounded-xl text-xs font-medium text-gray-200 bg-white/[0.03] border border-white/10 hover:border-secondary-soft hover:bg-white/[0.07] hover:text-white transition-all cursor-default"
                     >
-                      {item}
+                      {skill}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* FOOTER ACCENT */}
-              <div className="mt-6 pt-3 border-t border-white/5 flex items-center justify-between text-[0.75rem] text-[var(--muted)]">
-                <span>Verified in production</span>
-                <span className="text-[#06b6d4]">● Active</span>
+              {/* Card Footer Status */}
+              <div className="mt-6 pt-3.5 border-t border-white/5 flex items-center justify-between text-[11px] text-gray-400">
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 size={13} className="text-primary" />
+                  <span>Production verified</span>
+                </span>
+                <span className="text-secondary font-mono text-[10px]">● Active Stack</span>
               </div>
             </div>
           ))}

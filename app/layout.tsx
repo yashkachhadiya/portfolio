@@ -1,15 +1,17 @@
 import { Metadata } from "next";
 import "./globals.css";
-import { DM_Sans, Syne } from "next/font/google";
+import { Sora, Inter } from "next/font/google";
 
-const dmSans = DM_Sans({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-dm",
+  variable: "--font-heading",
+  display: "swap",
 });
 
-const syne = Syne({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -34,8 +36,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${dmSans.variable} ${syne.variable}`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${sora.variable} ${inter.variable}`}
+        suppressHydrationWarning
+      >
+        {children}
+      </body>
     </html>
   );
 }

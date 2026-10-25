@@ -6,11 +6,11 @@ import {
   Github,
   Globe,
   Layers,
-  Server,
   Sparkles,
   BarChart3,
   GraduationCap,
   Boxes,
+  ArrowUpRight,
 } from "lucide-react";
 
 type ProjectCategory = "all" | "production" | "personal";
@@ -122,43 +122,45 @@ export default function Projects() {
   const getIcon = (iconName: ProjectItem["icon"]) => {
     switch (iconName) {
       case "dashboard":
-        return <BarChart3 size={32} className="text-[#06b6d4]" />;
+        return <BarChart3 size={24} className="text-primary" />;
       case "education":
-        return <GraduationCap size={32} className="text-[#a78bfa]" />;
+        return <GraduationCap size={24} className="text-secondary" />;
       case "brand":
-        return <Globe size={32} className="text-[#38bdf8]" />;
+        return <Globe size={24} className="text-primary-light" />;
       case "hoarding":
-        return <Boxes size={32} className="text-[#34d399]" />;
+        return <Boxes size={24} className="text-secondary-light" />;
       case "inventory":
-        return <Layers size={32} className="text-[#f59e0b]" />;
+        return <Layers size={24} className="text-primary" />;
     }
   };
 
   return (
-    <section id="projects" className="py-24 px-6 relative">
+    <section id="projects" className="py-24 px-4 sm:px-6 relative">
       <div className="max-w-[1200px] mx-auto">
-        {/* HEADER */}
-        <div className="text-center mb-12 max-w-[760px] mx-auto">
-          <p className="section-label mb-3">PORTFOLIO SHOWCASE</p>
-          <h2 className="section-title mb-4">
-            Featured Projects & <br />
-            <span className="grad-text">Production Deployments</span>
+        {/* Section Header */}
+        <div className="text-center max-w-[760px] mx-auto mb-12">
+          <div className="inline-block mb-3">
+            <span className="section-tag">PROJECT PORTFOLIO</span>
+          </div>
+          <h2 className="section-heading mb-4">
+            Production Deployments <br className="hidden sm:inline" />
+            <span className="grad-text-aurora">& Full-Stack Architectures</span>
           </h2>
-          <p className="section-description">
-            A blend of live commercial web applications delivered at{" "}
-            <span className="text-white font-medium">Advergrow Solution</span> and
-            full-stack open-source platforms built with React, Node.js, and MongoDB.
+          <p className="section-desc">
+            Explore live commercial platforms built for enterprise clients at{" "}
+            <strong className="text-white">Advergrow Solution</strong> alongside full-stack
+            open-source applications.
           </p>
 
-          {/* FILTER BUTTONS */}
+          {/* Frosted Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
             <button
               type="button"
               onClick={() => setActiveFilter("all")}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
+              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
                 activeFilter === "all"
-                  ? "bg-gradient-to-r from-[#7c3aed] to-[#06b6d4] text-white shadow-md"
-                  : "bg-white/5 border border-white/10 text-[var(--muted)] hover:text-white"
+                  ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/25 border border-white/20"
+                  : "glass-pill text-gray-400 hover:text-white"
               }`}
             >
               All Projects ({projects.length})
@@ -166,10 +168,10 @@ export default function Projects() {
             <button
               type="button"
               onClick={() => setActiveFilter("production")}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
+              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
                 activeFilter === "production"
-                  ? "bg-gradient-to-r from-[#7c3aed] to-[#06b6d4] text-white shadow-md"
-                  : "bg-white/5 border border-white/10 text-[var(--muted)] hover:text-white"
+                  ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/25 border border-white/20"
+                  : "glass-pill text-gray-400 hover:text-white"
               }`}
             >
               Company Production Sites (3)
@@ -177,54 +179,54 @@ export default function Projects() {
             <button
               type="button"
               onClick={() => setActiveFilter("personal")}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
+              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
                 activeFilter === "personal"
-                  ? "bg-gradient-to-r from-[#7c3aed] to-[#06b6d4] text-white shadow-md"
-                  : "bg-white/5 border border-white/10 text-[var(--muted)] hover:text-white"
+                  ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/25 border border-white/20"
+                  : "glass-pill text-gray-400 hover:text-white"
               }`}
             >
-              Full-Stack GitHub Platforms (2)
+              Full-Stack GitHub Repos (2)
             </button>
           </div>
         </div>
 
-        {/* PROJECTS GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((p, i) => (
             <div
               key={i}
-              className="card overflow-hidden p-0 rounded-2xl border border-white/10 bg-[rgba(19,19,26,0.7)] backdrop-blur-md flex flex-col justify-between hover:border-[rgba(124,58,237,0.4)] transition group"
+              className="glass-panel rounded-3xl overflow-hidden p-0 flex flex-col justify-between hover:border-white/20 transition-all group"
             >
-              {/* TOP HEADER SECTION WITH ACCENT GRADIENT */}
-              <div className="p-6 bg-gradient-to-br from-[rgba(124,58,237,0.18)] to-[rgba(6,182,212,0.12)] border-b border-white/5 flex flex-col justify-between h-[150px] relative overflow-hidden">
-                <div className="flex items-center justify-between z-10">
-                  <span className="text-[0.7rem] uppercase tracking-wider font-semibold py-1 px-2.5 rounded-full bg-[rgba(10,10,15,0.7)] border border-white/10 text-[#06b6d4]">
+              {/* Card Header Top Gradient */}
+              <div className="p-6 bg-gradient-to-br from-white/[0.04] to-transparent border-b border-white/10 relative overflow-hidden">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="badge-secondary">
                     {p.badge}
                   </span>
-                  <span className="text-xs text-[var(--muted)] font-medium">
+                  <span className="text-[11px] text-gray-400 font-mono">
                     {p.organization}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3 z-10">
-                  <div className="p-2.5 rounded-xl bg-[rgba(10,10,15,0.7)] border border-white/10 group-hover:scale-110 transition-transform">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 group-hover:scale-105 transition-transform">
                     {getIcon(p.icon)}
                   </div>
                   <div>
-                    <h3 className="font-bold text-white text-lg group-hover:text-[#06b6d4] transition">
+                    <h3 className="font-bold text-white text-lg group-hover:text-secondary-light transition-colors">
                       {p.title}
                     </h3>
                   </div>
                 </div>
 
                 {/* Ambient glow decoration */}
-                <div className="absolute -right-8 -bottom-8 w-24 h-24 rounded-full bg-[#7c3aed]/10 blur-xl group-hover:bg-[#06b6d4]/20 transition" />
+                <div className="absolute -right-8 -bottom-8 w-24 h-24 rounded-full bg-primary/10 blur-xl group-hover:bg-secondary/20 transition" />
               </div>
 
-              {/* BODY SECTION */}
+              {/* Card Body */}
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <p className="text-[var(--muted)] text-xs md:text-sm leading-relaxed mb-4">
+                  <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
                     {p.description}
                   </p>
 
@@ -233,9 +235,9 @@ export default function Projects() {
                     {p.highlights.map((h, hIdx) => (
                       <div
                         key={hIdx}
-                        className="text-[0.75rem] text-gray-300 flex items-start gap-1.5"
+                        className="text-[11px] text-gray-400 flex items-start gap-1.5"
                       >
-                        <span className="text-[#06b6d4] font-bold">›</span>
+                        <span className="text-secondary font-bold">›</span>
                         <span>{h}</span>
                       </div>
                     ))}
@@ -248,25 +250,25 @@ export default function Projects() {
                     {p.tech.map((t, idx) => (
                       <span
                         key={idx}
-                        className="text-[0.7rem] px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-gray-300"
+                        className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-gray-300"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
 
-                  {/* Links / Action Buttons */}
+                  {/* Action CTAs */}
                   <div className="flex items-center gap-2 pt-2">
                     {p.liveUrl && (
                       <a
                         href={p.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-glow flex-1 py-2.5 px-3 rounded-xl text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5"
+                        className="btn-glow flex-1 py-2.5 px-3 rounded-xl text-white text-xs font-bold flex items-center justify-center gap-1.5"
                       >
-                        <Globe size={15} />
+                        <Globe size={13} />
                         <span>Visit Live Site</span>
-                        <ExternalLink size={13} />
+                        <ArrowUpRight size={13} />
                       </a>
                     )}
 
@@ -275,11 +277,11 @@ export default function Projects() {
                         href={p.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-outline flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 hover:border-[#7c3aed] transition"
+                        className="btn-glass flex-1 py-2.5 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 hover:border-white/20 transition"
                       >
-                        <Github size={15} />
-                        <span>GitHub Code</span>
-                        <ExternalLink size={13} />
+                        <Github size={13} />
+                        <span>GitHub Repo</span>
+                        <ArrowUpRight size={13} />
                       </a>
                     )}
                   </div>
